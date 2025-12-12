@@ -11,7 +11,7 @@ hero:
       link: /guide/getting-started
     - theme: alt
       text: View on GitHub
-      link: https://github.com/your-username/b2v
+      link: https://github.com/fabriziosalmi/b2v
 
 features:
   - title: High Performance

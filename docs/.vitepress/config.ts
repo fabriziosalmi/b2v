@@ -31,7 +31,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/your-username/b2v' }
+      { icon: 'github', link: 'https://github.com/fabriziosalmi/b2v' }
     ]
   }
 })

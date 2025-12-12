@@ -26,7 +26,7 @@ It is a spiritual successor to [Infinite Storage Glitch](https://github.com/Dvor
 
 ### Build from Source
 ```bash
-git clone https://github.com/your-username/b2v.git
+git clone https://github.com/fabriziosalmi/b2v.git
 cd b2v
 cargo build --release
 ```

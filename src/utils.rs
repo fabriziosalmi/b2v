@@ -67,3 +67,33 @@ impl FileHeader {
         Ok(header)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_header_serialization() {
+        let original = FileHeader::new(
+            "test_file.txt".to_string(),
+            12345,
+            4,
+            "hash123".to_string(),
+            10,
+            2,
+        );
+
+        let bytes = original.to_bytes().expect("Serialization failed");
+        assert_eq!(bytes.len(), HEADER_SIZE);
+
+        let decoded = FileHeader::from_bytes(&bytes).expect("Deserialization failed");
+        
+        assert_eq!(decoded.magic, MAGIC_NUMBER);
+        assert_eq!(decoded.version, VERSION);
+        assert_eq!(decoded.original_filename, "test_file.txt");
+        assert_eq!(decoded.file_size, 12345);
+        assert_eq!(decoded.block_size, 4);
+        assert_eq!(decoded.data_shards, 10);
+        assert_eq!(decoded.parity_shards, 2);
+    }
+}

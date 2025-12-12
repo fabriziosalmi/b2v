@@ -15,8 +15,17 @@ export default defineConfig({
         text: 'Guide',
         items: [
           { text: 'Getting Started', link: '/guide/getting-started' },
-          { text: 'Architecture', link: '/guide/architecture' },
-          { text: 'Benchmarks', link: '/guide/benchmarks' }
+          { text: 'Recommended Platforms', link: '/guide/recommended-platforms' },
+          { text: 'Architecture', link: '/guide/architecture' }
+        ]
+      },
+      {
+        text: 'Code Internals',
+        items: [
+          { text: 'CLI Entry (main.rs)', link: '/guide/code/main' },
+          { text: 'Utils & Header', link: '/guide/code/utils' },
+          { text: 'Encoder Logic', link: '/guide/code/encoder' },
+          { text: 'Decoder Logic', link: '/guide/code/decoder' }
         ]
       }
     ],

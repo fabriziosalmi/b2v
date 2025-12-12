@@ -74,8 +74,24 @@ Run the end-to-end verification script to confirm everything is working:
 ./test_e2e.sh
 ```
 
-## ⚠️ Disclaimer
-This tool is for educational and backup purposes. Please respect the Terms of Service of any platform you upload data to.
+## ⚠️ Legal Disclaimer & Terms of Service
+
+**CRITICAL WARNING**: Using this tool to store non-video data on **public video hosting platforms** effectively treats them as "Infinite Cloud Storage", which may likely **violate their Terms of Service (ToS)**.
+
+We strongly recommend using `b2v` ONLY on:
+- **Private/Self-hosted video instances** (e.g., your own Peertube instance, Nextcloud, NAS).
+- **Platforms where you explicitly own the storage rights**.
+
+**The authors of Eternal-Stream are not responsible for any banned accounts, data deletion, or legal consequences resulting from the misuse of this tool on third-party platforms.** Always evaluate the risks and read the ToS of the service you are using.
+
+## 🤝 Recommended Platforms
+To ensure data ownership and compliance, we recommend using this tool with Open Source, self-hosted alternatives:
+
+| Platform | Type | Use Case |
+|----------|------|----------|
+| **[PeerTube](https://joinpeertube.org/)** | Decentralized Video | Community/Enterprise Hosting |
+| **[Nextcloud](https://nextcloud.com/)** | Cloud Storage | Private Cloud Integration |
+| **[Jellyfin](https://jellyfin.org/)** | Media Server | Home/NAS Backups |
 
 ## 📄 License
 MIT License.

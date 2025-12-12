@@ -3,6 +3,11 @@
 ## Introduction
 Eternal-Stream (b2v) allows you to use video hosting platforms as infinite cloud storage. It works by converting binary files into video streams that look like static (random noise) to the human eye but contain error-corrected data for the computer.
 
+::: warning ⚠️ COMPLIANCE WARNING
+**Do not use this tool on public platforms without verifying their Terms of Service.**
+Storing binary data as video often violates "Fair Use" policies of free hosting providers. We recommend using this tool for **[self-hosted storage](/guide/recommended-platforms)** or private servers only. You are responsible for your own data and accounts.
+:::
+
 ## Installation
 
 ### Via Cargo

@@ -29,3 +29,8 @@ test_restored.bin
 # IDEs
 .idea/
 .vscode/
+
+# Node/VitePress
+node_modules/
+docs/.vitepress/dist/
+docs/.vitepress/cache/

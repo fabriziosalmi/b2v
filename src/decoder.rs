@@ -23,7 +23,7 @@ impl Decoder {
     pub fn run(&self) -> Result<()> {
         // Spawn FFmpeg to read video
         let mut child = Command::new("ffmpeg")
-            .args(&[
+            .args([
                 "-i", &self.input_path,
                 "-f", "rawvideo",
                 "-pix_fmt", PIXEL_FORMAT,
@@ -139,8 +139,8 @@ impl Decoder {
                 match rs.reconstruct(&mut shards_buffer) {
                     Ok(_) => {
                         // Write Data Shards
-                        for i in 0..header.data_shards {
-                            if let Some(data) = &shards_buffer[i] {
+                        for data in shards_buffer.iter().take(header.data_shards) {
+                            if let Some(data) = data {
                                 // Handle last chunk size
                                 let mut to_write = data.as_slice();
                                 let remaining = header.file_size - bytes_written_total;
@@ -148,7 +148,7 @@ impl Decoder {
                                     to_write = &to_write[..remaining as usize];
                                 }
                                 
-                                if to_write.len() > 0 {
+                                if !to_write.is_empty() {
                                     output_file.write_all(to_write)?;
                                     hasher.update(to_write);
                                     pb.inc(to_write.len() as u64);

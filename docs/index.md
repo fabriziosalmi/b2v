@@ -20,4 +20,6 @@ features:
     details: Reed-Solomon erasure coding ensures data survival against corruption.
   - title: Universal
     details: Works with any video hosting platform that accepts standard video files.
+  - title: ⚠️ Compliance
+    details: Use responsibly. Designed for self-hosted or proprietary storage. Respect platform ToS.
 ---

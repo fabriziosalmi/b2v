@@ -51,7 +51,7 @@ impl Encoder {
 
         // Setup FFmpeg
         let mut child = Command::new("ffmpeg")
-            .args(&[
+            .args([
                 "-f", "rawvideo",
                 "-pixel_format", PIXEL_FORMAT,
                 "-video_size", &format!("{}x{}", VIDEO_WIDTH, VIDEO_HEIGHT),

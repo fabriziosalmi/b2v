@@ -4,7 +4,7 @@
 ![Rust](https://img.shields.io/badge/built_with-Rust-orange.svg)
 ![Status](https://img.shields.io/badge/status-stable-green.svg)
 
-**Eternal-Stream (b2v)** is a high-performance Enterprise CLI tool designed to store large files as video streams on video hosting platforms (YouTube, Google Drive, etc.).
+**Eternal-Stream (b2v)** is a high-performance Enterprise CLI tool designed to store large files as video streams on any video hosting platform.
 
 It is a spiritual successor to [Infinite Storage Glitch](https://github.com/DvorakDwarf/Infinite-Storage-Glitch), rewritten from scratch in **Rust** with a focus on:
 - **Performance**: Zero-Copy streaming and parallel processing (rayon).

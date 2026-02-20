@@ -2,9 +2,9 @@
 layout: home
 
 hero:
-  name: "Eternal-Stream"
-  text: "Infinite Storage Glitch, Evolved."
-  tagline: Enterprise-grade Rust implementation for storing data as video.
+  name: "Eternal-Stream (b2v)"
+  text: "Encode files as video."
+  tagline: A Rust CLI tool that converts binary files into video streams and back, using Reed-Solomon error correction and FFmpeg.
   actions:
     - theme: brand
       text: Get Started
@@ -14,12 +14,12 @@ hero:
       link: https://github.com/fabriziosalmi/b2v
 
 features:
-  - title: High Performance
-    details: Written in Rust with Rayon for multi-core parallelism and zero-copy streaming.
-  - title: Error Correction
-    details: Reed-Solomon erasure coding ensures data survival against corruption.
-  - title: Universal
-    details: Works with any video hosting platform that accepts standard video files.
-  - title: ⚠️ Compliance
-    details: Use responsibly. Designed for self-hosted or proprietary storage. Respect platform ToS.
+  - title: Chunk-based streaming
+    details: Reads input in chunks rather than loading the whole file into memory.
+  - title: Reed-Solomon error correction
+    details: Each chunk is split into data and parity shards so that limited frame corruption can be recovered during decoding.
+  - title: Configurable block size
+    details: Each bit is rendered as a square block of pixels. Larger blocks are more resilient to lossy video compression at the cost of storage density.
+  - title: Compliance
+    details: Intended for use on platforms where you control the storage. Do not use on public video hosts without verifying their Terms of Service.
 ---

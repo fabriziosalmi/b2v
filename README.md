@@ -4,27 +4,32 @@
 ![Rust](https://img.shields.io/badge/built_with-Rust-orange.svg)
 ![Status](https://img.shields.io/badge/status-stable-green.svg)
 
-**Eternal-Stream (b2v)** is a high-performance Enterprise CLI tool designed to store large files as video streams on any video hosting platform.
+**Eternal-Stream (b2v)** is a CLI tool that encodes arbitrary binary files into video files and decodes them back. It is a spiritual successor to [Infinite Storage Glitch](https://github.com/DvorakDwarf/Infinite-Storage-Glitch), rewritten from scratch in Rust.
 
-It is a spiritual successor to [Infinite Storage Glitch](https://github.com/DvorakDwarf/Infinite-Storage-Glitch), rewritten from scratch in **Rust** with a focus on:
-- **Performance**: Zero-Copy streaming and parallel processing (rayon).
-- **Integrity**: Built-in Reed-Solomon Forward Error Correction (FEC).
-- **Scalability**: Designed for 100GB+ backups using `ffv1` (lossless) or `libx264`.
+The tool reads input data in chunks (avoiding loading the whole file into RAM), applies Reed-Solomon forward error correction, and pipes raw frames to FFmpeg to produce a standard video container.
 
-## 🚀 Features
+## Features
 
-- **Streaming Architecture**: Never loads the whole file into RAM. Process Terabytes of data with minimal memory footprint.
-- **Robust Error Correction**: Uses Reed-Solomon erasure coding to recover data even if video frames are corrupted or dropped.
-- **Block Scaling**: Configurable pixel block size (e.g., 4x4) to resist video compression artifacts.
-- **Cross-Platform**: Windows, Linux, MacOS (requires FFmpeg).
+- **Chunk-based streaming**: Reads input files in chunks rather than loading them entirely into memory.
+- **Reed-Solomon error correction**: Splits each chunk into data and parity shards so that some frame corruption can be recovered during decoding.
+- **Configurable block size**: Each logical bit is expanded into a block of pixels (e.g., 4×4). Larger blocks trade storage density for resilience against lossy video compression.
+- **Parallel frame encoding**: Uses Rayon to render pixel blocks across CPU cores.
+- **FFmpeg backend**: Supports any codec FFmpeg accepts (tested with `ffv1` for lossless output and `libx264` for compressed output).
 
-## 📦 Installation
+## Known limitations
+
+- Output resolution is fixed at 1920×1080.
+- The SHA-256 hash stored in the video header is a placeholder (`PENDING`). The actual hash is printed to stdout after encoding and is not verified automatically during decoding.
+- The header frame is always encoded with block size 4, regardless of the `--block-size` value chosen for data frames.
+- Lossy codecs (e.g., `libx264`) can corrupt data even with error correction if the compression is aggressive. Use `ffv1` for reliable round-trips.
+
+## Installation
 
 ### Prerequisites
-- **Rust** (1.70+)
-- **FFmpeg** (must be in your PATH)
+- Rust (1.70+)
+- FFmpeg (must be in your PATH)
 
-### Build from Source
+### Build from source
 ```bash
 git clone https://github.com/fabriziosalmi/b2v.git
 cd b2v
@@ -33,9 +38,9 @@ cargo build --release
 
 The binary will be available at `./target/release/b2v`.
 
-## 🛠 Usage
+## Usage
 
-### Encode (File -> Video)
+### Encode (file to video)
 Convert a binary file into a video file (`.mkv`, `.mp4`).
 
 ```bash
@@ -50,12 +55,12 @@ b2v encode \
 |--------|---------|-------------|
 | `--input`, `-i` | Required | Path to the input file. |
 | `--output`, `-o` | Required | Path to the output video. |
-| `--block-size` | `4` | Size of pixel blocks. `1` is densest, `8` is most robust. |
-| `--codec` | `ffv1` | FFmpeg codec. `ffv1` (lossless) or `libx264` (compressed). |
-| `--data-shards` | `10` | RS Data chunks per frame. |
-| `--parity-shards` | `2` | RS Parity chunks for recovery. |
+| `--block-size` | `4` | Pixel block size per bit. `1` gives highest density; larger values add resilience against compression. |
+| `--codec` | `ffv1` | FFmpeg codec. `ffv1` is lossless; `libx264` is lossy. |
+| `--data-shards` | `10` | Number of Reed-Solomon data shards per chunk. |
+| `--parity-shards` | `2` | Number of Reed-Solomon parity shards per chunk. |
 
-### Decode (Video -> File)
+### Decode (video to file)
 Restore the original file from a video.
 
 ```bash
@@ -64,34 +69,31 @@ b2v decode \
   --output ./restored_backup.iso
 ```
 
-*Note: The tool automatically reads the header from the video to determine original filename, size, and settings.*
+The decoder reads the header from the first video frame to determine the original filename, file size, block size, and Reed-Solomon parameters.
 
-## 🧪 Testing
+## Testing
 
-Run the end-to-end verification script to confirm everything is working:
+Run the end-to-end verification script:
 
 ```bash
 ./test_e2e.sh
 ```
 
-## ⚠️ Legal Disclaimer & Terms of Service
+## Legal disclaimer
 
-**CRITICAL WARNING**: Using this tool to store non-video data on **public video hosting platforms** effectively treats them as "Infinite Cloud Storage", which may likely **violate their Terms of Service (ToS)**.
+Using this tool to store non-video data on public video hosting platforms may violate their Terms of Service. Use `b2v` only on platforms where you have the right to store arbitrary data (e.g., your own self-hosted instance, a private NAS, or a server you control).
 
-We strongly recommend using `b2v` ONLY on:
-- **Private/Self-hosted video instances** (e.g., your own Peertube instance, Nextcloud, NAS).
-- **Platforms where you explicitly own the storage rights**.
+The authors are not responsible for banned accounts, data loss, or legal consequences resulting from misuse of this tool on third-party platforms.
 
-**The authors of Eternal-Stream are not responsible for any banned accounts, data deletion, or legal consequences resulting from the misuse of this tool on third-party platforms.** Always evaluate the risks and read the ToS of the service you are using.
+## Recommended platforms
 
-## 🤝 Recommended Platforms
-To ensure data ownership and compliance, we recommend using this tool with Open Source, self-hosted alternatives:
+If you want to use `b2v` as a storage backend, self-hosted platforms give you full control over what you upload:
 
-| Platform | Type | Use Case |
-|----------|------|----------|
-| **[PeerTube](https://joinpeertube.org/)** | Decentralized Video | Community/Enterprise Hosting |
-| **[Nextcloud](https://nextcloud.com/)** | Cloud Storage | Private Cloud Integration |
-| **[Jellyfin](https://jellyfin.org/)** | Media Server | Home/NAS Backups |
+| Platform | Notes |
+|----------|-------|
+| [PeerTube](https://joinpeertube.org/) | Self-hosted, decentralized video hosting. |
+| [Nextcloud](https://nextcloud.com/) | Self-hosted file and media storage. |
+| [Jellyfin](https://jellyfin.org/) | Self-hosted media server. |
 
-## 📄 License
+## License
 MIT License.

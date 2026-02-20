@@ -60,8 +60,8 @@ fn main() -> Result<()> {
 
     // Print banner
     println!("Eternal-Stream v0.1.0");
-    println!("Spiritual successor to Infinite Storage Glitch - Enterprise Grade");
-    println!("===============================================================");
+    println!("Spiritual successor to Infinite Storage Glitch");
+    println!("===============================================");
 
     match &cli.command {
         Commands::Encode { 

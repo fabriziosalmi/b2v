@@ -29,4 +29,4 @@ rs.reconstruct(&mut shards_buffer)?;
 ```
 
 ### 3. Integrity Check
-We calculate the SHA256 of the output file on-the-fly. At the end, we compare it with the `sha256_hash` stored in the Header.
+We calculate the SHA256 of the output file on-the-fly. At the end, the hash is printed to stdout. If the header's `sha256_hash` field is not `PENDING`, the decoder compares the two values and warns if they differ. In practice, the header hash is currently always set to `PENDING` by the encoder, so automatic integrity verification is not performed; keep the hash printed at encode time separately if you need it.

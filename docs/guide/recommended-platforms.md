@@ -1,33 +1,30 @@
 # Recommended Platforms
 
-To ensure legal compliance and true data ownership, we recommend using `b2v` with self-hosted or decentralized video platforms. Here are the best Open Source candidates to "close the loop" safely.
+`b2v` is intended for use on platforms where you control the storage. Self-hosted or locally-run platforms are the safest choice.
 
-## 1. PeerTube (Self-Hosted)
-[PeerTube](https://joinpeertube.org/) is a decentralized video hosting network based on ActivityPub.
-- **Why**: You can host your own instance on a VPS (DigitalOcean, Hetzner, etc.).
-- **Pros**: Full control over data, Federation support, Modern UI.
-- **Usage**: Upload your `b2v` videos to your private or unlisted channel.
+## PeerTube (self-hosted)
+[PeerTube](https://joinpeertube.org/) is a decentralized video hosting platform based on ActivityPub.
+- Host your own instance on a VPS or dedicated server.
+- Upload `b2v` videos to a private or unlisted channel.
 
-## 2. Nextcloud
-[Nextcloud](https://nextcloud.com/) is the industry standard for self-hosted cloud storage.
-- **Why**: It treats video files as first-class citizens.
-- **Pros**: Integrated with file storage, huge ecosystem.
-- **Usage**: Store `.mkv` files directly or use the "Media" app.
+## Nextcloud
+[Nextcloud](https://nextcloud.com/) is a self-hosted file storage and collaboration platform.
+- Store `.mkv` or `.mp4` files directly in your file storage.
+- Works with the Nextcloud "Media" app for browsing.
 
-## 3. Jellyfin / Emby
-[Jellyfin](https://jellyfin.org/) is a Free Software Media System.
-- **Why**: Designed to organize and stream video.
-- **Pros**: Completely free, no tracking, works on any server.
-- **Usage**: Point Jellyfin to your backup folder and stream your data "backups" locally or remotely.
+## Jellyfin
+[Jellyfin](https://jellyfin.org/) is a free, open-source media server.
+- Point Jellyfin at a directory of `b2v` videos to organize and access them.
+- No tracking, no subscription required.
 
-## 4. Decentralized Networks (IPFS / LBRY / Odysee)
-- **IPFS**: InterPlanetary File System. True immutable storage.
-- **LBRY/Odysee**: Blockchain-based content distribution.
-- **Note**: While decentralized, ensure you are not violating "spam" or "abuse" policies of public gateways.
+## Decentralized networks (IPFS, LBRY/Odysee)
+- **IPFS**: Content-addressed, immutable storage. Files are publicly accessible via public gateways unless restricted.
+- **LBRY/Odysee**: Blockchain-based content distribution. Review abuse policies before uploading non-standard content.
 
 ## Summary
-| Platform | Control | Cost | Recommended For |
-|----------|---------|------|-----------------|
-| **PeerTube** | ⭐⭐⭐⭐⭐ | VPS Cost | Community / Enterprise |
-| **Nextcloud**| ⭐⭐⭐⭐⭐ | VPS Cost | Personal Cloud |
-| **Jellyfin** | ⭐⭐⭐⭐⭐ | Hardware | Home Backup |
+
+| Platform | Notes |
+|----------|-------|
+| PeerTube | Requires running your own instance. |
+| Nextcloud | Straightforward file storage; no video-specific upload limits. |
+| Jellyfin | Local/LAN media server; no upload restrictions. |

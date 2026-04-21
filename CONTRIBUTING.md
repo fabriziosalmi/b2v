@@ -1,14 +1,14 @@
 # Contributing to b2v
 
-Welcome to b2v!
-
-We welcome contributions from everyone. Whether you are a new contributor or an experienced engineer, your input is valuable in making this project better.
+Welcome to b2v! We welcome contributions from everyone. Whether you are a new contributor or an experienced engineer, your input is valuable in making this project better.
 
 ## Code of Conduct
 
 Please read our [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) to understand our expectations for respectful interaction.
 
 ## How to Contribute
+
+We welcome contributions through Pull Requests (PRs). Please follow these steps for submitting code, documentation updates, or bug reports.
 
 ### 1. Fork the Repository
 Fork the repository on GitHub to start working on your changes.
@@ -29,8 +29,10 @@ git checkout -b feature/my-contribution
 ### 4. Make Changes
 Implement your changes in the relevant files.
 
-### 5. Run Tests
+### 5. Run Tests and Verify CI
 Ensure all existing tests pass and add new tests to cover your changes. If you are working on Rust code, run `cargo test`. If you are working on TypeScript/JS code, run `npm test` or relevant commands.
+
+After making changes, ensure that the Continuous Integration (CI) pipeline runs successfully. For CI related issues, please check the workflow files in the `.github/workflows/` directory if applicable.
 
 ### 6. Commit Your Changes
 Make sure your commit messages are clear and descriptive. Follow Conventional Commits where possible (e.g., `feat: add new feature`, `fix: correct a bug`).
@@ -51,8 +53,8 @@ Open a Pull Request against the main branch of the original repository, clearly 
 
 **When opening a PR, please ensure you:
 *   Address any open issues.
-*   Include relevant test results if applicable.
-*   Provide clear context for the changes.**
+*   Include relevant test results or CI status if applicable.
+*   Provide clear context for the changes (e.g., what was changed and why). Documentation updates should also be clearly noted.**
 
 ## Development Setup
 
@@ -69,6 +71,10 @@ We strive for high-quality, readable code. Please adhere to the following:
 *   **Linting/Formatting:** Use tools like `rustfmt` (for Rust) and Prettier/ESLint (for TypeScript/JS) to maintain consistent formatting.
 *   **Code Reviews:** All contributions must be reviewed by at least one other core team member before merging.
 
-## Submitting Changes
+## Running CI
 
-For bug reports or feature requests that don't involve code changes, please open an issue in the repository.
+Contributions that modify code or documentation should trigger the CI pipeline. If you encounter issues with CI, please report them in an issue first.
+
+## Submitting Feedback and Reports
+
+For bug reports, feature requests, or general feedback that does not involve direct code changes, please open an issue in the repository.

@@ -27,6 +27,9 @@ jobs:
       - name: Run Clippy
         run: cargo clippy -- -D warnings
       
+      - name: Run Tests and Generate Coverage
+        run: cargo test --all-targets --features=coverage
+
       - name: Build Docs
         run: npm run docs:build
       
@@ -37,7 +40,8 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs/.vitepress/dist
-      
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+
+      - name: Upload Codecov Report
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

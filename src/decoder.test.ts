@@ -30,6 +30,9 @@ describe('Decoder', () => {
     // Further complex test based on the actual implementation details of the decoder
     // Placeholder for real logic testing
     const input = 'test_input';
+    // NOTE: This relies on an assumed 'encode' method existing on the decoder instance or globally/imported.
+    // Since we don't have the implementation, we must assume it exists for this test to be valid in a real scenario.
+    // For this exercise, we simulate calling an expected method based on the original file structure.
     const output = decoder.encode(input);
     expect(decoder.decode(output)).toBe(input);
   });

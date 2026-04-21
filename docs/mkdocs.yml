@@ -1,0 +1,11 @@
+site_name: B2V Project
+nav:
+  - Home: index.md
+  - Architecture: guide/architecture.md
+  - Code Examples:
+    - Decoder: guide/code/decoder.md
+    - Encoder: guide/code/encoder.md
+    - Main Logic: guide/code/main.md
+    - Utilities: guide/code/utils.md
+  - Getting Started: guide/getting-started.md
+  - Recommended Platforms: guide/recommended-platforms.md

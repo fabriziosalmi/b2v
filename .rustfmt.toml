@@ -1,0 +1,4 @@
+[rustfmt]
+sorting_keys = ["std", "explicit"]
+case_empty_block = true
+trailing_comma = true

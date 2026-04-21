@@ -6,13 +6,15 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
   ],
   "parser": {
     "parser": "@typescript-eslint/parser"
   },
   "plugins": [
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "prettier"
   ],
   "rules": {
     "@typescript-eslint/explicit-module-boundary-types": [
@@ -25,7 +27,7 @@
     "no-unused-vars": [
       "error",
       {
-        "argsIgnorePattern": "^@" 
+        "argsIgnorePattern": "^@"
       }
     ]
   }

@@ -30,14 +30,15 @@ git checkout -b feature/my-contribution
 Implement your changes in the relevant files.
 
 ### 5. Run Tests and Verify CI
-Ensure all existing tests pass and add new tests to cover your changes. If you are working on Rust code, run `cargo test`. If you are working on TypeScript/JS code, run `npm test` or relevant commands.
+Ensure all existing tests pass and add new tests to cover your changes. The process depends on the language:
+*   **Rust:** Run `cargo test`.
+*   **TypeScript/JavaScript:** Run `npm test` or relevant commands.
 
 After making changes, ensure that the Continuous Integration (CI) pipeline runs successfully. For CI related issues, please check the workflow files in the `.github/workflows/` directory if applicable.
 
 ### 6. Commit Your Changes
 Make sure your commit messages are clear and descriptive. Follow Conventional Commits where possible (e.g., `feat: add new feature`, `fix: correct a bug`).
 ```bash
-go
 git add .
 git commit -m "feat: descriptive message"
 ```
@@ -66,15 +67,13 @@ If you are working on tests or related JS files, ensure you have Node.js and npm
 
 ## Code Style and Formatting
 
-We strive for high-quality, readable code. Please adhere to the following:
+We strive for high-quality, readable code. Please adhere to the following standards:
 
-*   **Linting/Formatting:** Use tools like `rustfmt` (for Rust) and Prettier/ESLint (for TypeScript/JS) to maintain consistent formatting.
+*   **Linting/Formatting:** Use established formatting tools to maintain consistent style across the project:
+    *   For Rust: Use `rustfmt`.
+    *   For TypeScript/JS: Use Prettier and ESLint.
 *   **Code Reviews:** All contributions must be reviewed by at least one other core team member before merging.
 
 ## Running CI
 
 Contributions that modify code or documentation should trigger the CI pipeline. If you encounter issues with CI, please report them in an issue first.
-
-## Submitting Feedback and Reports
-
-For bug reports, feature requests, or general feedback that does not involve direct code changes, please open an issue in the repository.

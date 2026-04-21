@@ -21,6 +21,10 @@ jobs:
       - name: Install Dependencies
         run: npm install
       
+      - name: Run Rust linting (clippy)
+        run: | 
+          cargo clippy -- -D warnings
+
       - name: Build Docs
         run: npm run docs:build
       

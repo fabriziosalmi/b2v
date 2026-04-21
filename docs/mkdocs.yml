@@ -9,3 +9,5 @@ nav:
     - Utilities: guide/code/utils.md
   - Getting Started: guide/getting-started.md
   - Recommended Platforms: guide/recommended-platforms.md
+
+# Add default theme configuration if needed, e.g., theme: material

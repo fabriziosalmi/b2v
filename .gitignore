@@ -31,5 +31,8 @@ node_modules/
 docs/.vitepress/dist/
 docs/.vitepress/cache/
 
+# Environment files
+.env
+
 # Cargo.lock is often generated and can be ignored if dependency management is handled elsewhere, or kept if required for reproducibility.
 Cargo.lock

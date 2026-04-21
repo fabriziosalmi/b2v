@@ -6,7 +6,8 @@
         "docs:dev": "vitepress dev docs",
         "docs:build": "vitepress build docs",
         "docs:preview": "vitepress preview docs",
-        "test:js": "jest --coverage"
+        "test:js": "jest --coverage",
+        "audit:js": "npm audit" 
     },
     "devDependencies": {
         "vitepress": "^1.0.0"

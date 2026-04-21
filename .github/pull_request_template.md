@@ -1,42 +1,19 @@
-# Pull Request Template
+# Pull Request
 
-This template should be filled out for all pull requests to ensure clarity and consistency.
+## Summary
 
-## 🎯 Summary
+<!-- One sentence: what does this PR do? -->
 
-Briefly describe what this PR is about (e.g., Feature implementation, Bug fix, Refactoring, Documentation update).
+## Changes
 
-## 📝 Description
+<!-- Bulleted list of what changed and why. Reference files where useful. -->
 
-Provide a detailed explanation of the changes being introduced.
+-
 
-### If it's a Feature Request:
+## Testing
 
-What problem does this solve?
-What is the desired outcome?
-Why is this change necessary?
+<!-- How was this verified? `cargo test` output, manual encode/decode round-trip, etc. -->
 
-### If it's a Bug Report:
+## Related Issues
 
-What behavior is observed that is incorrect?
-What is the expected behavior?
-
-## 🛠️ Changes Implemented
-
-List the specific changes made. Reference relevant files or sections if possible.
-
-## 🧪 Testing
-
-Describe how this change was tested and what tests were run (e.g., unit tests, integration tests).
-
-## 🚀 How to Test Locally
-
-Provide clear instructions on how a user can reproduce the issue or verify the feature locally.
-
-## 📚 Related Issues
-
-Reference any related open issues (e.g., Closes #123).
-
-## 💡 Reviewer Notes
-
-(Leave this section for reviewers to add feedback.)
+<!-- e.g. Closes #123 -->

@@ -21,9 +21,15 @@ jobs:
       - name: Install Dependencies
         run: npm install
       
+      - name: Run Rust tests
+        run: cargo test
+
       - name: Run Rust linting (clippy)
         run: |
           cargo clippy -- -D warnings
+
+      - name: Run TypeScript tests
+        run: npm test
 
       - name: Run Tests and Report Coverage
         uses: codecov/codecov-action@v3
@@ -41,7 +47,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs/.vitepress/dist
-      
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

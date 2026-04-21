@@ -24,6 +24,9 @@ jobs:
       - name: Format Rust code
         run: cargo fmt --all-targets
       
+      - name: Run Clippy
+        run: cargo clippy -- -D warnings
+      
       - name: Build Docs
         run: npm run docs:build
       

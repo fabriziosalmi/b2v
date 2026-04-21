@@ -22,8 +22,14 @@ jobs:
         run: npm install
       
       - name: Run Rust linting (clippy)
-        run: | 
+        run: |
           cargo clippy -- -D warnings
+
+      - name: Run Tests and Report Coverage
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage.json
 
       - name: Build Docs
         run: npm run docs:build

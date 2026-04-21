@@ -1,0 +1,23 @@
+repos:
+  - repo: https://pre-commit.com/hooks/pre-commit-config
+    hooks:
+      - id: check-yaml
+        name: Check YAML
+        entry: check-yaml
+        language: system
+        files: 
+          - .pre-commit-config.yaml
+      - id: rustfmt
+        name: Rustfmt check
+        entry: rustfmt
+        language: system
+        files: 
+          - src/**/*.rs
+      - id: prettier
+        name: Prettier check (for TS/JS)
+        entry: prettier --write-file
+        language: system
+        types: [ts, js]
+        files: 
+          - docs/**/*.ts
+          - src/**/*.test.ts

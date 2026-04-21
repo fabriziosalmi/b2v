@@ -34,3 +34,5 @@ test_restored.bin
 node_modules/
 docs/.vitepress/dist/
 docs/.vitepress/cache/
+
+.env

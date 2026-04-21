@@ -1,0 +1,12 @@
+site_name: "b2v Documentation"
+nav:
+  - Home: index.md
+  - Guide:
+    - Getting Started: guide/getting-started.md
+    - Recommended Platforms: guide/recommended-platforms.md
+    - Architecture: guide/architecture.md
+  - Code Internals:
+    - CLI Entry (main.rs): guide/code/main.md
+    - Utils & Header: guide/code/utils.md
+    - Encoder Logic: guide/code/encoder.md
+    - Decoder Logic: guide/code/decoder.md

@@ -51,7 +51,7 @@ b2v encode \
   --codec ffv1
 ```
 
-| Option | Default | Description |
+| Option | Default | Description | 
 |--------|---------|-------------|
 | `--input`, `-i` | Required | Path to the input file. |
 | `--output`, `-o` | Required | Path to the output video. |
@@ -66,34 +66,19 @@ Restore the original file from a video.
 ```bash
 b2v decode \
   --input ./backup_video.mkv \
-  --output ./restored_backup.iso
+  --output .
+... (truncated)
 ```
 
-The decoder reads the header from the first video frame to determine the original filename, file size, block size, and Reed-Solomon parameters.
+## Contributing
 
-## Testing
+We welcome contributions! If you'd like to contribute to Eternal-Stream, please read our [CONTRIBUTING.md](CONTRIBUTING.md) for details on how we take feedback, submit bug reports, and propose new features.
 
-Run the end-to-end verification script:
+### How to contribute
+1. Fork the repository.
+2. Create a new feature branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the branch (`git push origin feature/AmazingFeature`).
+5. Open a Pull Request.
 
-```bash
-./test_e2e.sh
-```
-
-## Legal disclaimer
-
-Using this tool to store non-video data on public video hosting platforms may violate their Terms of Service. Use `b2v` only on platforms where you have the right to store arbitrary data (e.g., your own self-hosted instance, a private NAS, or a server you control).
-
-The authors are not responsible for banned accounts, data loss, or legal consequences resulting from misuse of this tool on third-party platforms.
-
-## Recommended platforms
-
-If you want to use `b2v` as a storage backend, self-hosted platforms give you full control over what you upload:
-
-| Platform | Notes |
-|----------|-------|
-| [PeerTube](https://joinpeertube.org/) | Self-hosted, decentralized video hosting. |
-| [Nextcloud](https://nextcloud.com/) | Self-hosted file and media storage. |
-| [Jellyfin](https://jellyfin.org/) | Self-hosted media server. |
-
-## License
-MIT License.
+We appreciate your interest!

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "coverage": "jest --coverage --reporter=text",
-    "audit": "npm audit" 
+    "audit": "npm audit"
   },
   "dependencies": {
     "@types/jest": "29.5.1",
@@ -18,6 +18,8 @@
     "@typescript-eslint/parser": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "eslint": "^8.56.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "prettier": "^3.0.0",
+    "@typescript-eslint/prettier-plugin": "^6.0.0"
   }
 }

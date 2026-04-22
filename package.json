@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
-    "coverage": "jest --coverage --reporter=text"
+    "coverage": "jest --coverage --reporter=text",
+    "audit": "npm audit" 
   },
   "dependencies": {
     "@types/jest": "29.5.1",

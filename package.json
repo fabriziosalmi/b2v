@@ -7,12 +7,16 @@
         "docs:build": "vitepress build docs",
         "docs:preview": "vitepress preview docs",
         "test:js": "jest --coverage",
-        "audit:js": "npm audit" 
+        "audit:js": "npm audit"
     },
     "devDependencies": {
-        "vitepress": "^1.0.0"
-    },
-    "engines": {
-        "node": "^18.0.0"
+        "vitepress": "^1.0.0",
+        "prettier": "^3.2.5",
+        "eslint": "^8.56.0",
+        "@typescript-eslint/parser": "^7.1.0",
+        "@typescript-eslint/eslint-plugin": "^4.7.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "@vitejs/plugin-react": "^4.2.1"
     }
 }

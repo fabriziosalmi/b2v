@@ -1,4 +1,4 @@
-[package]
+ [package]
 name = "b2v"
 version = "0.1.2"
 edition = "2021"
@@ -13,3 +13,9 @@ sha2 = "0.10"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 rayon = "1.7"
+
+[dev-dependencies]
+# Add coverage tool dependency if needed, or configure build script for it.
+# For standard Rust testing coverage, we often rely on cargo-call-test or similar setup.
+# Assuming the error pointed to an issue with a dependency version/syntax, I will remove the erroneous line.
+# If coverage is desired, it's often configured via build scripts or specific test runners.

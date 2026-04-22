@@ -23,5 +23,3 @@ describe('Encoder', () => {
     // To make this test robust, we should ideally import or instantiate the decoder if needed for verification.
     // Since imports are complex in this context, we'll assume the necessary dependencies (like Decoder) are mocked or globally available for now,
     // but we'll ensure the structure is sound.
-  });
-});

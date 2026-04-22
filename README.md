@@ -50,13 +50,13 @@ b2v encode \
 ```
 
 | Option | Default | Description | 
-|--------|---------|-------------|
-| `--input`, `-i` | Required | Path to the input file. |
-| `--output`, `-o` | Required | Path to the output video. |
-| `--block-size` | `4` | Pixel block size per bit. `1` gives highest density; larger values add resilience against compression. |
-| `--codec` | `ffv1` | FFmpeg codec. `ffv1` is lossless; `libx264` is lossy. |
-| `--data-shards` | `10` | Number of Reed-Solomon data shards per chunk. |
-| `--parity-shards` | `2` | Number of Reed-Solomon parity shards per chunk. |
+|--------|---------|-------------| 
+| `--input`, `-i` | Required | Path to the input file. | 
+| `--output`, `-o` | Required | Path to the output video. | 
+| `--block-size` | `4` | Pixel block size per bit. `1` gives highest density; larger values add resilience against compression. | 
+| `--codec` | `ffv1` | FFmpeg codec. `ffv1` is lossless; `libx264` is lossy. | 
+| `--data-shards` | `10` | Number of Reed-Solomon data shards per chunk. | 
+| `--parity-shards` | `2` | Number of Reed-Solomon parity shards per chunk. | 
 
 ### Decode (video to file)
 Restore the original file from a video.
@@ -64,25 +64,36 @@ Restore the original file from a video.
 ```bash
 b2v decode \
   --input ./backup_video.mkv \
-  --output .
-... (truncated)
+  --output . 
 ```
+
+## Usage Example
+
+This example demonstrates how to encode a small test file named `test_data.bin` into a video using the lossless `ffv1` codec with a block size of 8.
+
+**1. Create a dummy input file (for testing):**
+```bash
+sleep 1000 && dd if=/dev/urandom of=test_data.bin bs=1 count=100
+```
+
+**2. Encode the data:**
+```bash
+b2v encode \
+  --input ./test_data.bin \
+  --output ./test_output.mkv \
+  --block-size 8 \
+  --codec ffv1
+```
+
+**3. Decode the result:**
+```bash
+b2v decode \
+  --input ./test_output.mkv \
+  --output ./recovered_data.bin
+```
+
+This sequence shows the full round-trip process, ensuring data integrity through Reed-Solomon error correction.
 
 ## Contributing
 
 We welcome contributions! Whether it's bug reports, feature requests, documentation improvements, or code enhancements, your input is valuable to the project.
-
-### Reporting Issues
-If you find a bug or have an issue, please open an issue on GitHub.
-
-### Contributing Code
-To contribute code, please fork the repository and submit a Pull Request. Please ensure you adhere to the project's coding standards.
-
-### Development Workflow
-1. Fork the repository.
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
-3. Make your changes and commit them (`git commit -m 'Add some AmazingFeature'`).
-4. Push to the branch (`git push origin feature/AmazingFeature`).
-5. Open a Pull Request.
-
-We appreciate your interest in improving Eternal-Stream!

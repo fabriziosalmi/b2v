@@ -8,8 +8,6 @@
 
 <!-- Bulleted list of what changed and why. Reference files where useful. -->
 
--
-
 ## Testing
 
 <!-- How was this verified? `cargo test` output, manual encode/decode round-trip, etc. -->

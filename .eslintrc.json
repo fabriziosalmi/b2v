@@ -6,7 +6,8 @@
   },
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
   ],
   "parser": {
     "parser": "@typescript-eslint/parser"
@@ -27,6 +28,12 @@
       "error",
       {
         "argsIgnorePattern": "^@"
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "lf"
       }
     ]
   }

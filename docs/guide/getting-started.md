@@ -41,5 +41,6 @@ b2v decode -i backup.mkv -o restored_data.zip
 The decoder reads the header from the first video frame to determine the encoding parameters automatically.
 
 ## Notes
+
 - The SHA-256 hash printed after encoding is not stored in the video header (the header contains a `PENDING` placeholder). Keep it separately if you want to verify integrity after decoding.
 - Use `ffv1` (lossless) for reliable round-trips. Lossy codecs like `libx264` can corrupt data even with error correction if the compression is aggressive.

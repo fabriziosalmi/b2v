@@ -66,19 +66,36 @@ Restore the original file from a video.
 ```bash
 b2v decode \
   --input ./backup_video.mkv \
-  --output .
-... (truncated)
+  --output ./recovered_file.iso
 ```
 
-## Contributing
+## Example Usage
 
-We welcome contributions! If you'd like to contribute to Eternal-Stream, please read our [CONTRIBUTING.md](CONTRIBUTING.md) for details on how we take feedback, submit bug reports, and propose new features.
+### Encoding Example
+This example shows how to encode a raw binary file using the default settings (block size 4, ffv1 codec).
 
-### How to contribute
-1. Fork the repository.
-2. Create a new feature branch (`git checkout -b feature/AmazingFeature`).
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4. Push to the branch (`git push origin feature/AmazingFeature`).
-5. Open a Pull Request.
+```bash
+b2v encode \
+  --input ./my_data.bin \
+  --output ./output_video.mkv
+```
 
-We appreciate your interest!
+### Encoding with Custom Settings
+To use a smaller block size (higher density) and a different codec:
+
+```bash
+b2v encode \
+  --input ./large_file.dat \
+  --output ./compressed_video.mp4 \
+  --block-size 2 \
+  --codec libx264
+```
+
+### Decoding Example
+This example shows how to decode a video back into an original file.
+
+```bash
+b2v decode \
+  --input ./existing_video.mkv \
+  --output ./recovered_data.bin
+```

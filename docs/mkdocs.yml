@@ -1,4 +1,6 @@
 site_name: B2V Project
+themes:
+  - material
 nav:
   - Home: index.md
   - Architecture: guide/architecture.md
@@ -9,3 +11,6 @@ nav:
     - Utilities: guide/code/utils.md
   - Getting Started: guide/getting-started.md
   - Recommended Platforms: guide/recommended-platforms.md
+theme: material
+plugins:
+  - search

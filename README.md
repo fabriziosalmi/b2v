@@ -66,34 +66,61 @@ Restore the original file from a video.
 ```bash
 b2v decode \
   --input ./backup_video.mkv \
-  --output ./restored_backup.iso
+  --output .
+... (truncated)
 ```
 
-The decoder reads the header from the first video frame to determine the original filename, file size, block size, and Reed-Solomon parameters.
+## Contributing
 
-## Testing
+We welcome contributions! If you'd like to contribute to Eternal-Stream, please follow these guidelines:
 
-Run the end-to-end verification script:
+1. Fork the repository.
+2. Create your feature branch (`git checkout -b feature/YourFeature`).
+3. Make your changes.
+4. Commit your changes (`git commit -m 'feat: description'`).
+5. Push to the branch (`git push origin feature/YourFeature`).
+6. Open a Pull Request.
 
-```bash
-./test_e2e.sh
-```
+Please ensure your contributions follow our code style and testing practices.
 
-## Legal disclaimer
-
-Using this tool to store non-video data on public video hosting platforms may violate their Terms of Service. Use `b2v` only on platforms where you have the right to store arbitrary data (e.g., your own self-hosted instance, a private NAS, or a server you control).
-
-The authors are not responsible for banned accounts, data loss, or legal consequences resulting from misuse of this tool on third-party platforms.
-
-## Recommended platforms
-
-If you want to use `b2v` as a storage backend, self-hosted platforms give you full control over what you upload:
-
-| Platform | Notes |
-|----------|-------|
-| [PeerTube](https://joinpeertube.org/) | Self-hosted, decentralized video hosting. |
-| [Nextcloud](https://nextcloud.com/) | Self-hosted file and media storage. |
-| [Jellyfin](https://jellyfin.org/) | Self-hosted media server. |
-
-## License
-MIT License.
+## File Tree
+.clippy.toml
+.editorconfig
+.eslintrc.json
+.github/ISSUE_TEMPLATE/bug_report.md
+.github/ISSUE_TEMPLATE/feature_request.md
+.github/pull_request_template.md
+.github/workflows/deploy-docs.yml
+.gitignore
+.pre-commit-config.yaml
+.rustfmt.toml
+CHANGELOG.md
+CONTRIBUTING.md
+Cargo.lock
+Cargo.toml
+LICENSE
+README.md
+SECURITY.md
+docs/.vitepress/config.ts
+docs/guide/architecture.md
+docs/guide/code/decoder.md
+docs/guide/code/encoder.md
+docs/guide/code/main.md
+docs/guide/code/utils.md
+docs/guide/getting-started.md
+docs/guide/index.md
+docs/guide/recommended-platforms.md
+docs/index.md
+docs/mkdocs.yml
+jest.config.js
+package-lock.json
+package.json
+src/decoder.rs
+src/decoder.test.ts
+src/encoder.rs
+src/encoder.test.ts
+src/main.rs
+src/tests
+src/utils.rs
+src/utils.test.ts
+target/.rustc_info.json

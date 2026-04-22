@@ -70,57 +70,37 @@ b2v decode \
 ... (truncated)
 ```
 
-## Contributing
+## Example Usage
 
-We welcome contributions! If you'd like to contribute to Eternal-Stream, please follow these guidelines:
+### Encoding an ISO file with lossless FFV1 codec
+This example demonstrates encoding a sample file using the default settings.
 
-1. Fork the repository.
-2. Create your feature branch (`git checkout -b feature/YourFeature`).
-3. Make your changes.
-4. Commit your changes (`git commit -m 'feat: description'`).
-5. Push to the branch (`git push origin feature/YourFeature`).
-6. Open a Pull Request.
+```bash
+# Create a dummy input file for testing
+dd if=/dev/zero of=test.bin bs=4096 count=1024
 
-Please ensure your contributions follow our code style and testing practices.
+# Encode the file (uses default block-size 4 and ffv1 codec)
+b2v encode \
+  --input ./test.bin \
+  --output ./test_video.mkv 
+```
 
-## File Tree
-.clippy.toml
-.editorconfig
-.eslintrc.json
-.github/ISSUE_TEMPLATE/bug_report.md
-.github/ISSUE_TEMPLATE/feature_request.md
-.github/pull_request_template.md
-.github/workflows/deploy-docs.yml
-.gitignore
-.pre-commit-config.yaml
-.rustfmt.toml
-CHANGELOG.md
-CONTRIBUTING.md
-Cargo.lock
-Cargo.toml
-LICENSE
-README.md
-SECURITY.md
-docs/.vitepress/config.ts
-docs/guide/architecture.md
-docs/guide/code/decoder.md
-docs/guide/code/encoder.md
-docs/guide/code/main.md
-docs/guide/code/utils.md
-docs/guide/getting-started.md
-docs/guide/index.md
-docs/guide/recommended-platforms.md
-docs/index.md
-docs/mkdocs.yml
-jest.config.js
-package-lock.json
-package.json
-src/decoder.rs
-src/decoder.test.ts
-src/encoder.rs
-src/encoder.test.ts
-src/main.rs
-src/tests
-src/utils.rs
-src/utils.test.ts
-target/.rustc_info.json
+### Encoding with custom block size and lossy codec
+This example shows how to use a larger block size for increased resilience and a lossy codec like libx264.
+
+```bash
+b2v encode \
+  --input ./backup.iso \
+  --output ./backup_video_lossy.mp4 \
+  --block-size 8 \
+  --codec libx264 
+```
+
+### Decoding a video file
+This example demonstrates decoding an encoded video file back to the current directory.
+
+```bash
+b2v decode \
+  --input ./backup_video.mkv \
+  --output .
+```

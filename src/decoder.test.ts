@@ -30,7 +30,7 @@ describe('Decoder', () => {
     // Further complex test based on the actual implementation details of the decoder
     // Placeholder for real logic testing
     const input = 'test_input';
-    const output = decoder.encode(input);
+    const output = decoder.encode(input); // NOTE: This assumes 'encode' exists on Decoder or is mocked/available
     expect(decoder.decode(output)).toBe(input);
   });
 });

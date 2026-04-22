@@ -2,7 +2,7 @@ describe('Encoder', () => {
   // Assuming the existence of an Encoder class or function that works in tandem with the Decoder
 
   it('should encode successfully and allow for round-trip decoding', () => {
-    // This test verifies that encoding data results in a valid format, 
+    // This test verifies that encoding data results in a valid format,
     // and that this encoded data can be correctly decoded back to the original input.
 
     // Note: This assumes 'Encoder' and 'Decoder' are accessible or mocked appropriately in the test environment.

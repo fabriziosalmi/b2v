@@ -1,17 +1,22 @@
 {
-    "name": "b2v-docs",
-    "version": "1.0.0",
-    "type": "module",
-    "scripts": {
-        "docs:dev": "vitepress dev docs",
-        "docs:build": "vitepress build docs",
-        "docs:preview": "vitepress preview docs",
-        "test:js": "jest --coverage"
-    },
-    "devDependencies": {
-        "vitepress": "^1.0.0"
-    },
-    "engines": {
-        "node": "^18.0.0"
-    }
+  "name": "b2v",
+  "version": "1.0.0",
+  "description": "A project for decoding and encoding data.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "coverage": "jest --coverage --reporter=text"
+  },
+  "dependencies": {
+    "@types/jest": "29.5.1",
+    "typescript": "^5.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "ts-jest": "^29.5.5",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "eslint": "^8.56.0",
+    "typescript": "^5.0.0"
+  }
 }

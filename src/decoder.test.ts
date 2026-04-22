@@ -30,6 +30,9 @@ describe('Decoder', () => {
     // Further complex test based on the actual implementation details of the decoder
     // Placeholder for real logic testing
     const input = 'test_input';
+    // NOTE: This test assumes decoder.encode exists or is accessible, which might need mocking in a real scenario.
+    // For this fix, we assume decoder has an encode method or we mock it if necessary.
+    // Since the original test used decoder.encode, we keep that structure but acknowledge it might be brittle.
     const output = decoder.encode(input);
     expect(decoder.decode(output)).toBe(input);
   });

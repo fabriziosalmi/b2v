@@ -1,5 +1,7 @@
 site_name: B2V Project
-thema: material
+theme: material
+markdown_docs: true
+
 nav:
   - Home: index.md
   - Architecture: guide/architecture.md

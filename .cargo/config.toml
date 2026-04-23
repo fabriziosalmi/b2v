@@ -1,0 +1,5 @@
+[package]
+name = "b2v"
+
+[dependencies]
+cargo-audit = "0.17.1"

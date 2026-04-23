@@ -1,26 +1,12 @@
-# Guide
+# B2V Documentation
 
-This guide provides an overview and detailed instructions for working with the project.
+Welcome to the official documentation for B2V. This guide covers all aspects of using and developing with B2V.
 
-## Architecture
-[Architecture Overview](./architecture.md)
-
-## Getting Started
-[Getting Started Guide](./getting-started.md)
-
-## Code Details
-
-### Decoder
-[Decoder Implementation](./code/decoder.md)
-
-### Encoder
-[Encoder Implementation](./code/encoder.md)
-
-### Main Logic
-[Main Application Flow](./code/main.md)
-
-### Utilities
-[Utility Functions](./code/utils.md)
-
-## Recommended Platforms
-[Recommended Platforms](./recommended-platforms.md)
+## Table of Contents
+- [Getting Started](docs/guide/getting-started.md)
+- [Architecture Overview](docs/guide/architecture.md)
+- [Code Examples](docs/guide/code/main.md)
+  - [Decoder Usage](docs/guide/code/decoder.md)
+  - [Encoder Usage](docs/guide/code/encoder.md)
+  - [Utility Functions](docs/guide/code/utils.md)
+- [Recommended Platforms](docs/guide/recommended-platforms.md)

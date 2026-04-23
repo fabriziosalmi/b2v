@@ -1,20 +1,48 @@
-# CLI Entry Application (`src/main.rs`)
+# Code Examples
 
-The entry point uses `clap` to parse command line arguments and dispatch execution to either the Encoder or Decoder.
+## Decoder Usage
 
-## Structure
+### Frontend (TypeScript)
+```typescript
+import { decode } from '@b2v/decoder';
+
+const data = 'example data';
+const decodedData = decode(data);
+console.log(decodedData);
+```
+
+### Backend (Rust)
 ```rust
-#[derive(Subcommand)]
-enum Commands {
-    Encode { ... },
-    Decode { ... },
+use b2v::decoder;
+
+fn main() {
+    let data = "example data";
+    let decoded_data = decoder::decode(data);
+    println!("Decoded data: {}", decoded_data);
 }
 ```
 
-## User Experience
-We use `indicatif` to ensure the user always knows what's happening.
-- **Progress Bars**: Show MB/s and ETA.
-- **Feedback**: Clear "Success" or "Hash Mismatch" messages.
+## Encoder Usage
 
-## Error Handling
-We use `anyhow` to propagate errors up to `main()`. If something fails (e.g., FFmpeg crashes, disk full), the user gets a pretty error message instead of a panic.
+### Frontend (TypeScript)
+```typescript
+import { encode } from '@b2v/encoder';
+
+const data = { key: 'value' };
+const encodedData = encode(data);
+console.log(encodedData);
+```
+
+### Backend (Rust)
+```rust
+use b2v::encoder;
+
+fn main() {
+    let data = serde_json::json!({ "key": "value" });
+    let encoded_data = encoder::encode(data);
+    println!("Encoded data: {}", encoded_data);
+}
+```
+
+## Utility Functions
+- [Utility Functions Documentation](docs/guide/code/utils.md)

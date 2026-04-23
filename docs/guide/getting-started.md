@@ -33,6 +33,21 @@ b2v decode -i backup.mkv -o restored_data.zip
 
 The decoder reads the header from the first video frame to determine the encoding parameters automatically.
 
+## Example Usage
+### Encoding a Large File
+To encode a 10GB file:
+```bash
+b2v encode -i large_file.bin -o output.mkv
+```
+This will process the file in 1MB chunks, ensuring low memory usage.
+
+### Decoding with Verification
+To decode and verify the integrity of a file:
+```bash
+b2v decode -i backup.mkv -o restored_data.zip
+```
+After decoding, compare the SHA-256 hash of the original file with the one printed during encoding.
+
 ## Notes
 - The SHA-256 hash printed after encoding is not stored in the video header (the header contains a `PENDING` placeholder). Keep it separately if you want to verify integrity after decoding.
 - Use `ffv1` (lossless) for reliable round-trips. Lossy codecs like `libx264` can corrupt data even with error correction if the compression is aggressive.

@@ -17,3 +17,18 @@
 
 ## Zero-Copy Design
 The tool is designed to handle files larger than available RAM. It uses streaming iterators and buffers only a few frames at a time.
+
+## Example Usage
+### Encoding with Reed-Solomon FEC
+To encode a file with Reed-Solomon FEC:
+```bash
+b2v encode -i data.zip -o backup.mkv
+```
+This will split the data into 10 data shards and 2 parity shards, allowing recovery even if 20% of the data is lost.
+
+### Decoding with Reed-Solomon FEC
+To decode a file that uses Reed-Solomon FEC:
+```bash
+b2v decode -i backup.mkv -o restored_data.zip
+```
+This will use the Reed-Solomon engine to rebuild any missing or corrupted shards.

@@ -8,20 +8,13 @@ Do not use this tool on public video hosting platforms without verifying their T
 :::
 
 ## Installation
-
 ### Via Cargo
 If you have Rust installed:
 ```bash
 cargo install --path .
 ```
 
-### From source
-1. Clone the repository
-2. Run `cargo build --release`
-3. The binary is in `target/release/b2v`
-
 ## Basic Usage
-
 ### Encoding
 To encode a file into a video:
 

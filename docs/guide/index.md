@@ -2,25 +2,25 @@
 
 This guide provides an overview and detailed instructions for working with the project.
 
-## Architecture
-[Architecture Overview](./architecture.md)
-
-## Getting Started
+## Quick Start
 [Getting Started Guide](./getting-started.md)
 
-## Code Details
+## Architecture Overview
+[Architecture Details](./architecture.md)
 
-### Decoder
-[Decoder Implementation](./code/decoder.md)
+## Core Concepts
 
-### Encoder
+### Data Encoding
 [Encoder Implementation](./code/encoder.md)
 
-### Main Logic
-[Main Application Flow](./code/main.md)
+### Data Decoding
+[Decoder Implementation](./code/decoder.md)
 
-### Utilities
-[Utility Functions](./code/utils.md)
+### Main Application Flow
+[Main Logic](./code/main.md)
 
-## Recommended Platforms
+### Utility Functions
+[Utility Implementation](./code/utils.md)
+
+## Platform Recommendations
 [Recommended Platforms](./recommended-platforms.md)

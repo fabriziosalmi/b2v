@@ -40,16 +40,23 @@ The binary will be available at `./target/release/b2v`.
 
 ## Usage
 
-### Encode (file to video)
+### Example Usage
+
+#### Encode (file to video)
 Convert a binary file into a video file (`.mkv`, `.mp4`).
 
 ```bash
-b2v encode \
-  --input ./backup.iso \
-  --output ./backup_video.mkv \
-  --block-size 4 \
-  --codec ffv1
+b2v encode \n  --input ./backup.iso \n  --output ./backup_video.mkv \n  --block-size 4 \n  --codec ffv1
 ```
+
+#### Decode (video to file)
+Restore the original file from a video.
+
+```bash
+b2v decode \n  --input ./backup_video.mkv \n  --output .
+```
+
+### Options
 
 | Option | Default | Description |
 |--------|---------|-------------|
@@ -60,40 +67,14 @@ b2v encode \
 | `--data-shards` | `10` | Number of Reed-Solomon data shards per chunk. |
 | `--parity-shards` | `2` | Number of Reed-Solomon parity shards per chunk. |
 
-### Decode (video to file)
-Restore the original file from a video.
+### Encode Example
 
 ```bash
-b2v decode \
-  --input ./backup_video.mkv \
-  --output ./restored_backup.iso
+b2v encode \n  --input /path/to/your/file \n  --output output_video.mkv \n  --block-size 4 \n  --codec ffv1
 ```
 
-The decoder reads the header from the first video frame to determine the original filename, file size, block size, and Reed-Solomon parameters.
-
-## Testing
-
-Run the end-to-end verification script:
+### Decode Example
 
 ```bash
-./test_e2e.sh
+b2v decode \n  --input output_video.mkv \n  --output /path/to/output/directory
 ```
-
-## Legal disclaimer
-
-Using this tool to store non-video data on public video hosting platforms may violate their Terms of Service. Use `b2v` only on platforms where you have the right to store arbitrary data (e.g., your own self-hosted instance, a private NAS, or a server you control).
-
-The authors are not responsible for banned accounts, data loss, or legal consequences resulting from misuse of this tool on third-party platforms.
-
-## Recommended platforms
-
-If you want to use `b2v` as a storage backend, self-hosted platforms give you full control over what you upload:
-
-| Platform | Notes |
-|----------|-------|
-| [PeerTube](https://joinpeertube.org/) | Self-hosted, decentralized video hosting. |
-| [Nextcloud](https://nextcloud.com/) | Self-hosted file and media storage. |
-| [Jellyfin](https://jellyfin.org/) | Self-hosted media server. |
-
-## License
-MIT License.

@@ -8,9 +8,7 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-  "parser": {
-    "parser": "@typescript-eslint/parser"
-  },
+  "parser": "@typescript-eslint/parser",
   "plugins": [
     "@typescript-eslint",
     "prettier"
@@ -28,6 +26,7 @@
       {
         "argsIgnorePattern": "^@"
       }
-    ]
+    ],
+    "prettier/prettier": ["error"]
   }
 }

@@ -28,6 +28,20 @@ b2v-cli init my-project
 b2v-cli new my-backend
 ```
 
+## Example Usage
+
+### Frontend Example: Creating a New Project
+```bash
+# Initialize a new frontend project
+b2v-cli init my-frontend-project
+```
+
+### Backend Example: Setting Up a New Service
+```bash
+# Create a new backend service
+b2v-cli new my-backend-service
+```
+
 ## Next Steps
 - [Architecture Overview](docs/guide/architecture.md)
 - [Code Examples](docs/guide/code/main.md)

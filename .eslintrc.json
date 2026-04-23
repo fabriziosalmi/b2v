@@ -28,6 +28,10 @@
       {
         "argsIgnorePattern": "^@"
       }
-    ]
+    ],
+    "prettier/prettier": "warn",
+    "curly": "error",
+    "quotes": ["error", "double"],
+    "semi": ["error", "always"]
   }
 }

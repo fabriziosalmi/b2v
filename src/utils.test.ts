@@ -1,7 +1,11 @@
-describe('Utils', () => {
-  // Placeholder tests for utility functions
-  it('should perform basic utility calculations', () => {
-    // TODO: Implement actual utility test
-    expect(1 + 1).toBe(2);
+// This file is automatically formatted by Prettier
+// Please ensure your code adheres to the project's style guide
+
+import { describe, test, expect } from '@jest/globals';
+import * as utils from './utils';
+
+describe('utils', () => {
+  test('should format correctly', () => {
+    expect(utils.formatString('test')).toBe('test');
   });
 });

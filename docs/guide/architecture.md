@@ -18,6 +18,11 @@
 - Frontend and backend communicate through a WebSocket connection
 - Data is serialized using JSON format
 
+## Failure Modes
+- **Coupling**: The frontend and backend are tightly coupled through the WebSocket connection. If the WebSocket server fails, the frontend will lose connectivity and may need to reconnect.
+- **Error Handling**: The frontend should handle WebSocket disconnections gracefully, re-establishing the connection if possible. The backend should log errors and retry failed operations as needed.
+- **Data Loss**: If the WebSocket connection is lost during data transmission, data may be lost. Implementing message acknowledgments and retransmission mechanisms can help mitigate this risk.
+
 ## Example Usage
 
 ### Frontend Example: Connecting to WebSocket

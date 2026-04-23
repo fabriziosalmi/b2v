@@ -46,14 +46,20 @@ The binary will be available at `./target/release/b2v`.
 Convert a binary file into a video file (`.mkv`, `.mp4`).
 
 ```bash
-b2v encode \n  --input ./backup.iso \n  --output ./backup_video.mkv \n  --block-size 4 \n  --codec ffv1
+b2v encode 
+  --input ./backup.iso 
+  --output ./backup_video.mkv 
+  --block-size 4 
+  --codec ffv1
 ```
 
 #### Decode (video to file)
 Restore the original file from a video.
 
 ```bash
-b2v decode \n  --input ./backup_video.mkv \n  --output .
+b2v decode 
+  --input ./backup_video.mkv 
+  --output .
 ```
 
 ### Options
@@ -70,11 +76,17 @@ b2v decode \n  --input ./backup_video.mkv \n  --output .
 ### Encode Example
 
 ```bash
-b2v encode \n  --input /path/to/your/file \n  --output output_video.mkv \n  --block-size 4 \n  --codec ffv1
+b2v encode 
+  --input /path/to/your/file 
+  --output output_video.mkv 
+  --block-size 4 
+  --codec ffv1
 ```
 
 ### Decode Example
 
 ```bash
-b2v decode \n  --input output_video.mkv \n  --output /path/to/output/directory
+b2v decode 
+  --input output_video.mkv 
+  --output /path/to/output/directory
 ```

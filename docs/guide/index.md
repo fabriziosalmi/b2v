@@ -10,3 +10,4 @@ Welcome to the official documentation for B2V. This guide covers all aspects of 
   - [Encoder Usage](docs/guide/code/encoder.md)
   - [Utility Functions](docs/guide/code/utils.md)
 - [Recommended Platforms](docs/guide/recommended-platforms.md)
+- [API Reference](docs/guide/api-reference.md)

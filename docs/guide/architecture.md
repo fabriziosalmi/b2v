@@ -1,19 +1,18 @@
-# Architecture
+---
+layout: default
+title: Architecture Overview
+---
 
-## Pipeline Overview
+# Architecture Overview
 
-### 1. The Encoder
-1. **Input Stream**: Reads the input file in 1MB chunks.
-2. **Reed-Solomon FEC**: Splits data into `10` data shards and calculates `2` parity shards (configurable). This allows recovering the file even if 20% of the data in a frame is lost.
-3. **Block Scaling**: Each logical bit is expanded into a block of pixels (e.g., 4x4). This makes the signal robust against video compression algorithms (H.264/VP9) which blur high-frequency noise.
-4. **FFmpeg Pipe**: The raw pixel frames are piped into `ffmpeg` via stdin to generate the video container (`mkv` or `mp4`).
+This guide explains the system architecture of b2v, including key components and their interactions.
 
-### 2. The Decoder
-1. **FFmpeg Pipe**: Spawns `ffmpeg` to read the video file and output raw RGB frames.
-2. **Bit Extraction**: Scans the center of each pixel block to determine if it is a `0` or `1`, effectively downsampling the image.
-3. **Header Parsing**: The first frame(s) contain a JSON header with file metadata (Filename, Size, Hash).
-4. **Reconstruction**: Uses the Reed-Solomon engine to rebuild missing or corrupted shards.
-5. **Output**: Writes the reconstructed bytes to the output file.
+## Key Components
 
-## Zero-Copy Design
-The tool is designed to handle files larger than available RAM. It uses streaming iterators and buffers only a few frames at a time.
+- **Decoder**: Handles input data parsing and conversion to internal representations.
+- **Encoder**: Manages output formatting and serialization of processed data.
+- **Utils**: Provides utility functions for common operations across the system.
+
+## Component Interaction
+
+The decoder and encoder work in tandem, with utils supporting both through helper functions. This design ensures modularity and ease of maintenance.

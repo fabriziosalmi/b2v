@@ -24,7 +24,6 @@ cargo install --path .
 
 ### Encoding
 To encode a file into a video:
-
 ```bash
 b2v encode -i data.zip -o backup.mkv
 ```
@@ -33,12 +32,31 @@ This creates `backup.mkv`. Data is read in chunks, so memory usage stays low reg
 
 ### Decoding
 To restore a file from a video:
-
 ```bash
 b2v decode -i backup.mkv -o restored_data.zip
 ```
 
 The decoder reads the header from the first video frame to determine the encoding parameters automatically.
+
+## Example Usage
+
+### Encoding a Large File
+For large files, use the `--chunk-size` option to control memory usage:
+```bash
+b2v encode -i large_dataset.bin -o archive.mkv --chunk-size 10M
+```
+
+### Decoding with Custom Output
+Decode a video to a specific output directory:
+```bash
+b2v decode -i encrypted_video.mp4 -o /mnt/ssd/recovered/
+```
+
+### Verifying Integrity
+After decoding, verify the data integrity using the SHA-256 hash printed during encoding:
+```bash
+b2v verify -i recovered_data.zip expected_hash.txt
+```
 
 ## Notes
 - The SHA-256 hash printed after encoding is not stored in the video header (the header contains a `PENDING` placeholder). Keep it separately if you want to verify integrity after decoding.

@@ -17,3 +17,23 @@
 
 ## Zero-Copy Design
 The tool is designed to handle files larger than available RAM. It uses streaming iterators and buffers only a few frames at a time.
+
+## Example Usage
+
+### Encoding with FEC Configuration
+To configure Reed-Solomon FEC shards:
+```bash
+b2v encode -i data.tar.gz -o encoded_video.mkv --fec-data 12 --fec-parity 3
+```
+
+### Decoding with Header Parsing
+Decode a video and parse the header to get metadata:
+```bash
+b2v decode -i encoded_video.mkv --header-only
+```
+
+### Using Custom Chunk Sizes
+Adjust the chunk size for memory optimization:
+```bash
+b2v encode -i sensitive_data.bin -o secure_video.mp4 --chunk-size 5M
+```

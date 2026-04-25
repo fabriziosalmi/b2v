@@ -27,6 +27,17 @@
         "argsIgnorePattern": "^@"
       }
     ],
-    "prettier/prettier": ["error"]
+    "prettier/prettier": ["error"],
+    "prefer-const": "warn",
+    "no-console": "error",
+    "no-debugger": "error",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^@"
+      }
+    ]
   }
 }

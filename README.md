@@ -16,6 +16,15 @@ The tool reads input data in chunks (avoiding loading the whole file into RAM), 
 - **Parallel frame encoding**: Uses Rayon to render pixel blocks across CPU cores.
 - **FFmpeg backend**: Supports any codec FFmpeg accepts (tested with `ffv1` for lossless output and `libx264` for compressed output).
 
+## Documentation
+
+For detailed information about the architecture, code structure, and implementation details, please refer to the following documentation sections:
+
+- [Architecture Overview](docs/guide/architecture.md)
+- [Encoder Implementation](docs/guide/code/encoder.md)
+- [Decoder Implementation](docs/guide/code/decoder.md)
+- [Utility Functions](docs/guide/code/utils.md)
+
 ## Known limitations
 
 - Output resolution is fixed at 1920×1080.
@@ -46,20 +55,14 @@ The binary will be available at `./target/release/b2v`.
 Convert a binary file into a video file (`.mkv`, `.mp4`).
 
 ```bash
-b2v encode \
-  --input ./backup.iso \
-  --output ./backup_video.mkv \
-  --block-size 4 \
-  --codec ffv1
+b2v encode \n  --input ./backup.iso \n  --output ./backup_video.mkv \n  --block-size 4 \n  --codec ffv1
 ```
 
 #### Decode (video to file)
 Restore the original file from a video.
 
 ```bash
-b2v decode \
-  --input ./backup_video.mkv \
-  --output ./restored_backup.iso
+b2v decode \n  --input ./backup_video.mkv \n  --output ./restored_backup.iso
 ```
 
 ### Options
@@ -71,22 +74,4 @@ b2v decode \
 | `--block-size` | `4` | Pixel block size per bit. `1` gives highest density; larger values add resilience against compression. |
 | `--codec` | `ffv1` | FFmpeg codec. `ffv1` is lossless; `libx264` is lossy. |
 | `--data-shards` | `10` | Number of Reed-Solomon data shards per chunk. |
-| `--parity-shards` | `2` | Number of Reed-Solomon parity shards per chunk. |
-
-### Encode Example
-
-```bash
-b2v encode \
-  --input /path/to/your/file \
-  --output output_video.mkv \
-  --block-size 4 \
-  --codec ffv1
-```
-
-### Decode Example
-
-```bash
-b2v decode \
-  --input output_video.mkv \
-  --output ./restored_file
-```
+| `--parity-shards`

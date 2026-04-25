@@ -2,11 +2,11 @@
 
 This guide provides an overview and detailed instructions for working with the project.
 
-## Architecture
-[Architecture Overview](./architecture.md)
-
 ## Getting Started
 [Getting Started Guide](./getting-started.md)
+
+## Architecture
+[Architecture Overview](./architecture.md)
 
 ## Code Details
 
@@ -14,7 +14,7 @@ This guide provides an overview and detailed instructions for working with the p
 [Decoder Implementation](./code/decoder.md)
 
 ### Encoder
-[Encoder Implementation](./code/encoder.md)
+[Encoder Implementation](./code/encoder.html)
 
 ### Main Logic
 [Main Application Flow](./code/main.md)

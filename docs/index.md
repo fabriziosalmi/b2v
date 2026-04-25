@@ -2,11 +2,11 @@
 
 This is the main documentation index.
 
-[Getting Started](/guide/getting-started.md)
+## Getting Started
+* [Getting Started Guide](/guide/getting-started.md)
 
 ## Guides
-
-* [Architecture](/guide/architecture.md)
+* [Architecture Overview](/guide/architecture.md)
 * [Code Examples](/guide/code/decoder.md)
 * [Code Examples](/guide/code/encoder.md)
 * [Main Logic](/guide/code/main.md)

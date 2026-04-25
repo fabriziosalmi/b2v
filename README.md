@@ -38,6 +38,14 @@ cargo build --release
 
 The binary will be available at `./target/release/b2v`.
 
+## Development Standards (CI)
+
+To contribute or run local tests, please ensure all code adheres to strict quality gates enforced by Continuous Integration:
+
+*   **Linting**: All new and modified code must pass `clippy` checks. Lint warnings are treated as errors.
+*   **Testing**: Unit and integration tests must achieve a minimum coverage threshold (details in CONTRIBUTING.md).
+*   **Formatting**: Code style is enforced using `rustfmt`. Please run formatting tools before submitting changes.
+
 ## Usage
 
 ### Example Usage
@@ -71,22 +79,4 @@ b2v decode \
 | `--block-size` | `4` | Pixel block size per bit. `1` gives highest density; larger values add resilience against compression. |
 | `--codec` | `ffv1` | FFmpeg codec. `ffv1` is lossless; `libx264` is lossy. |
 | `--data-shards` | `10` | Number of Reed-Solomon data shards per chunk. |
-| `--parity-shards` | `2` | Number of Reed-Solomon parity shards per chunk. |
-
-### Encode Example
-
-```bash
-b2v encode \
-  --input /path/to/your/file \
-  --output output_video.mkv \
-  --block-size 4 \
-  --codec ffv1
-```
-
-### Decode Example
-
-```bash
-b2v decode \
-  --input output_video.mkv \
-  --output ./restored_file
-```
+| `--parity-shards`

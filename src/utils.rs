@@ -12,6 +12,7 @@ pub const VIDEO_HEIGHT: usize = 1080;
 pub const FRAME_RATE: usize = 30;
 pub const PIXEL_FORMAT: &str = "rgb24";
 
+/// Represents the metadata header for a file chunk archive.
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct FileHeader {
     pub magic: u64,
@@ -25,6 +26,15 @@ pub struct FileHeader {
 }
 
 impl FileHeader {
+    /// Creates a new `FileHeader` instance with required metadata.
+    /// 
+    /// # Arguments
+    /// * `original_filename` - The name of the original file.
+    /// * `file_size` - The total size of the original file in bytes.
+    /// * `block_size` - The block size used for chunking.
+    /// * `sha256_hash` - The SHA256 hash of the original file.
+    /// * `data_shards` - Number of data shards created.
+    /// * `parity_shards` - Number of parity shards created.
     pub fn new(
         original_filename: String,
         file_size: u64,
@@ -36,15 +46,20 @@ impl FileHeader {
         Self {
             magic: MAGIC_NUMBER,
             version: VERSION,
-            original_filename,
-            file_size,
-            block_size,
-            sha256_hash,
-            data_shards,
-            parity_shards,
+            original_filename, 
+            file_size, 
+            block_size, 
+            sha256_hash, 
+            data_shards, 
+            parity_shards, 
         }
     }
 
+    /// Serializes the `FileHeader` into a fixed-size byte vector (1024 bytes).
+    /// The resulting JSON string is padded with null bytes up to `HEADER_SIZE`.
+    /// 
+    /// # Returns
+    /// A `Result<Vec<u8>>` containing the padded header bytes, or an error if serialization fails or the header is too large.
     pub fn to_bytes(&self) -> Result<Vec<u8>> {
         let json = serde_json::to_string(self).context("Failed to serialize header")?;
         let bytes = json.as_bytes();
@@ -56,6 +71,14 @@ impl FileHeader {
         Ok(padded)
     }
 
+    /// Deserializes a `FileHeader` from a fixed-size byte slice.
+    /// It reads the JSON content up to the first null byte and validates the magic number.
+    /// 
+    /// # Arguments
+    /// * `bytes` - The byte slice containing the header data (must be padded).
+    /// 
+    /// # Returns
+    /// A `Result<Self>` containing the deserialized `FileHeader`, or an error if parsing fails or the magic number is invalid.
     pub fn from_bytes(bytes: &[u8]) -> Result<Self> {
         // Find the first null byte to determine end of JSON string
         let len = bytes.iter().position(|&x| x == 0).unwrap_or(bytes.len());

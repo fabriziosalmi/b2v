@@ -1,37 +1,41 @@
 repos:
-  - repo: https://pre-commit.com/hooks/pre-commit-config
+  - repo: https://github.com/pre-commit/pre-commit-hooks
     hooks:
       - id: check-yaml
         name: Check YAML
         entry: check-yaml
         language: system
-        files: 
+        files:
           - .pre-commit-config.yaml
+  - repo: https://github.com/rust-lang-nursery/rustfmt
+    hooks:
       - id: rustfmt
         name: Rustfmt check
         entry: rustfmt
         language: system
-        files: 
+        files:
           - src/**/*.rs
+  - repo: https://github.com/prettier/eslint-config-prettier
+    hooks:
       - id: prettier
         name: Prettier check (for TS/JS)
         entry: prettier --write-file
         language: system
-        types: [ts, js]
-        files: 
+        types:
+          - ts
+          - js
+        files:
           - docs/**/*.ts
           - src/**/*.test.ts
+  - repo: https://github.com/prettier/eslint-config-prettier
+    hooks:
       - id: prettier
         name: Prettimal check (for JS/TS)
         entry: prettier --write-file
         language: system
-        types: [ts, js]
-        files: 
+        types:
+          - ts
+          - js
+        files:
           - src/**/*.ts
           - src/**/*.js
-      - id: rustfmt
-        name: Rustfmt check (for all rs files)
-        entry: rustfmt
-        language: system
-        files: 
-          - src/**/*.rs

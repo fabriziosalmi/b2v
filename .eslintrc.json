@@ -27,6 +27,13 @@
         "argsIgnorePattern": "^@"
       }
     ],
-    "prettier/prettier": ["error"]
+    "prettier/prettier": ["error"],
+    "curly": "error",
+    "eqeqeq": "error",
+    "no-console": "warn",
+    "no-debugger": "error",
+    "prefer-const": "error",
+    "quotes": ["error", { "useSingleQuotes": true }],
+    "semi": ["error", "always"]
   }
 }

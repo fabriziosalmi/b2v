@@ -71,11 +71,9 @@ b2v decode \
 | `--block-size` | `4` | Pixel block size per bit. `1` gives highest density; larger values add resilience against compression. |
 | `--codec` | `ffv1` | FFmpeg codec. `ffv1` is lossless; `libx264` is lossy. |
 | `--data-shards` | `10` | Number of Reed-Solomon data shards per chunk. |
-| `--parity-shards`
-... (truncated)
+| `--parity-shards` | `2` | Number of Reed-Solomon parity shards per chunk. |
 
 ## Documentation
-
 For more information, see our documentation:
 - [Getting Started](https://b2v.github.io/docs/guide/getting-started.md)
 - [Architecture](https://b2v.github.io/docs/guide/architecture.md)

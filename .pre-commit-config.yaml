@@ -20,4 +20,5 @@ repos:
         types: [ts, js]
         files: 
           - docs/**/*.ts
-          - src/**/*.test.ts
+          - src/**/test*.ts
+          - jest.config.js

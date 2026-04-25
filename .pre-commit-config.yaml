@@ -21,3 +21,5 @@ repos:
         files: 
           - docs/**/*.ts
           - src/**/*.test.ts
+          - src/**/*.ts
+          - src/**/*.js

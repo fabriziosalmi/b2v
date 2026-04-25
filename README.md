@@ -71,22 +71,14 @@ b2v decode \
 | `--block-size` | `4` | Pixel block size per bit. `1` gives highest density; larger values add resilience against compression. |
 | `--codec` | `ffv1` | FFmpeg codec. `ffv1` is lossless; `libx264` is lossy. |
 | `--data-shards` | `10` | Number of Reed-Solomon data shards per chunk. |
-| `--parity-shards` | `2` | Number of Reed-Solomon parity shards per chunk. |
+| `--parity-shards`
+... (truncated)
 
-### Encode Example
+## Documentation
 
-```bash
-b2v encode \
-  --input /path/to/your/file \
-  --output output_video.mkv \
-  --block-size 4 \
-  --codec ffv1
-```
-
-### Decode Example
-
-```bash
-b2v decode \
-  --input output_video.mkv \
-  --output ./restored_file
-```
+For more information, see our documentation:
+- [Getting Started](https://b2v.github.io/docs/guide/getting-started.md)
+- [Architecture](https://b2v.github.io/docs/guide/architecture.md)
+- [Encoder Implementation](https://b2v.github.io/docs/guide/code/encoder.md)
+- [Decoder Implementation](https://b2v.github.io/docs/guide/code/decoder.md)
+- [Utility Functions](https://b2v.github.io/docs/guide/code/utils.md)

@@ -19,8 +19,6 @@ describe('Decoder', () => {
     describe('Decoder Run', () => {
         it('should successfully run the decoding process', async () => {
             // Testing the flow where ffmpeg reads input and buffers frames.
-            // This test verifies that the setup for reading header and buffering is executed without immediate crash.
-
             const decoder = new Decoder(INPUT_PATH, OUTPUT_PATH);
 
             // In a real scenario, this would require mocking ffmpeg output to simulate frame data.

@@ -21,3 +21,17 @@ repos:
         files: 
           - docs/**/*.ts
           - src/**/*.test.ts
+      - id: prettier
+        name: Prettimal check (for JS/TS)
+        entry: prettier --write-file
+        language: system
+        types: [ts, js]
+        files: 
+          - src/**/*.ts
+          - src/**/*.js
+      - id: rustfmt
+        name: Rustfmt check (for all rs files)
+        entry: rustfmt
+        language: system
+        files: 
+          - src/**/*.rs

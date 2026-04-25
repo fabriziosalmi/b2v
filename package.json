@@ -10,7 +10,7 @@
     },
     "devDependencies": {
         "vitepress": "^1.0.0",
-        "prettier": "^3.2.4"
+        "prettier": "^3.3.0"
     },
     "engines": {
         "node": "^18.0.0"

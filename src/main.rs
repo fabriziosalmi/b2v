@@ -55,6 +55,22 @@ enum Commands {
     },
 }
 
+/// Main entry point for the Eternal-Stream utility. 
+/// 
+/// This function parses command line arguments using `clap` to determine 
+/// whether the user intends to encode or decode a video file.
+/// 
+/// The core logic is dispatched based on the parsed subcommand:
+/// - If `Encode`, it initializes and runs the `encoder::Encoder` module.
+/// - If `Decode`, it initializes and runs the `decoder::Decoder` module.
+/// 
+/// # Arguments
+/// 
+/// Reads command line arguments via `Cli::parse()`.
+/// 
+/// # Returns
+/// 
+/// A `Result<()>` indicating successful execution or an error encountered during processing.
 fn main() -> Result<()> {
     let cli = Cli::parse();
 

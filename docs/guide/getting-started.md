@@ -18,7 +18,7 @@ cargo install --path .
 ### From source
 1. Clone the repository
 2. Run `cargo build --release`
-3. The binary is in `target/release/b2v`
+3. The binary is in `target/release/b2/case`.
 
 ## Basic Usage
 

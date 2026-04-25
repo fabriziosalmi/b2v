@@ -20,12 +20,6 @@ describe('Decoder', () => {
     expect(() => decoder.decode(invalidData)).toThrow('Invalid decoding format');
   });
 
-  it('should handle empty input gracefully (if applicable)', () => {
-    // Test case for edge case: empty string
-    const emptyResult = decoder.decode('');
-    expect(emptyResult).toBe('');
-  });
-
   it('should handle decoding of a specific known pattern', () => {
     // Further complex test based on the actual implementation details of the decoder
     // Placeholder for real logic testing

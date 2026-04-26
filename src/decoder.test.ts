@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import { Decoder } from './decoder';
 
 describe('Decoder', () => {

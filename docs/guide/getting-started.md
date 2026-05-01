@@ -47,3 +47,4 @@ The decoder reads the header from the first video frame to determine the encodin
 ## Additional Resources
 - [Architecture Overview](/guide/architecture)
 - [Recommended Platforms](/guide/recommended-platforms)
+- [Contributing Guide](/CONTRIBUTING.md)

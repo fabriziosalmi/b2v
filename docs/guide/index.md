@@ -24,3 +24,6 @@ This guide provides an overview and detailed instructions for working with the p
 
 ## Recommended Platforms
 [Recommended Platforms](./recommended-platforms.md)
+
+## Contributing
+[Contributing Guide](/CONTRIBUTING.md)

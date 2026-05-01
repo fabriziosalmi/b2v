@@ -4,19 +4,30 @@ export default defineConfig({
   title: "Eternal-Stream",
   description: "Enterprise Data-to-Video Storage Solution",
   base: "/b2v/", // Assumes deploying to https://username.github.io/b2v/
+  lastUpdated: true,
+  cleanUrls: true,
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Guide', link: '/guide/getting-started' }
+      { text: 'Guide', link: '/guide/getting-started' },
+      { text: 'API Reference', link: '/guide/api' },
+      { text: 'Contributing', link: '/contributing' }
     ],
 
     sidebar: [
       {
-        text: 'Guide',
+        text: 'Getting Started',
         items: [
-          { text: 'Getting Started', link: '/guide/getting-started' },
-          { text: 'Recommended Platforms', link: '/guide/recommended-platforms' },
-          { text: 'Architecture', link: '/guide/architecture' }
+          { text: 'Introduction', link: '/' },
+          { text: 'Quick Start', link: '/guide/getting-started' },
+          { text: 'Recommended Platforms', link: '/guide/recommended-platforms' }
+        ]
+      },
+      {
+        text: 'Architecture',
+        items: [
+          { text: 'Overview', link: '/guide/architecture' },
+          { text: 'Design Patterns', link: '/guide/architecture/design-patterns' }
         ]
       },
       {
@@ -32,6 +43,15 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/fabriziosalmi/b2v' }
-    ]
+    ],
+
+    editLinkText: "Edit this page on GitHub",
+    outline: ['deep']
+  },
+
+  vite: {
+    optimizeDeps: {
+      include: []
+    }
   }
 })

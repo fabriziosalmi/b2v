@@ -72,6 +72,14 @@ fn main() -> Result<()> {
             parity_shards,
             codec 
         } => {
+            // Validate Reed-Solomon configuration
+            if *data_shards == 0 {
+                anyhow::bail!("data_shards cannot be 0; Reed-Solomon requires at least one data shard.");
+            }
+            if *parity_shards == 0 {
+                anyhow::bail!("parity_shards cannot be 0; Reed-Solomon requires at least one parity shard.");
+            }
+
             println!("Mode: ENCODE");
             println!("Input: {}", input);
             println!("Output: {}", output);

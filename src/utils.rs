@@ -57,8 +57,11 @@ impl FileHeader {
     }
 
     pub fn from_bytes(bytes: &[u8]) -> Result<Self> {
+        if bytes.len() < HEADER_SIZE {
+            return Err(anyhow::anyhow!("Header bytes too short: expected {}, got {}", HEADER_SIZE, bytes.len()));
+        }
         // Find the first null byte to determine end of JSON string
-        let len = bytes.iter().position(|&x| x == 0).unwrap_or(bytes.len());
+        let len = bytes.iter().position(|&x| x == 0).unwrap_or(HEADER_SIZE);
         let json_str = std::str::from_utf8(&bytes[..len]).context("Invalid UTF-8 in header")?;
         let header: FileHeader = serde_json::from_str(json_str).context("Failed to deserialize header")?;
         if header.magic != MAGIC_NUMBER {
@@ -95,5 +98,11 @@ mod tests {
         assert_eq!(decoded.block_size, 4);
         assert_eq!(decoded.data_shards, 10);
         assert_eq!(decoded.parity_shards, 2);
+    }
+
+    #[test]
+    fn test_from_bytes_short_input() {
+        let short_bytes = vec![0u8; 512];
+        assert!(FileHeader::from_bytes(&short_bytes).is_err());
     }
 }

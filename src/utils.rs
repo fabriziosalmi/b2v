@@ -62,6 +62,9 @@ impl FileHeader {
         }
         // Find the first null byte to determine end of JSON string
         let len = bytes.iter().position(|&x| x == 0).unwrap_or(HEADER_SIZE);
+        if len >= HEADER_SIZE {
+            return Err(anyhow::anyhow!("Header missing null terminator"));
+        }
         let json_str = std::str::from_utf8(&bytes[..len]).context("Invalid UTF-8 in header")?;
         let header: FileHeader = serde_json::from_str(json_str).context("Failed to deserialize header")?;
         if header.magic != MAGIC_NUMBER {
@@ -104,5 +107,15 @@ mod tests {
     fn test_from_bytes_short_input() {
         let short_bytes = vec![0u8; 512];
         assert!(FileHeader::from_bytes(&short_bytes).is_err());
+    }
+
+    #[test]
+    fn test_from_bytes_no_null_terminator() {
+        let mut bytes = vec![0u8; HEADER_SIZE];
+        // Fill the entire header with non-zero bytes (no null terminator)
+        for b in bytes.iter_mut() {
+            *b = b'x';
+        }
+        assert!(FileHeader::from_bytes(&bytes).is_err());
     }
 }

@@ -25,6 +25,9 @@ export default defineConfig({
   title: "Eternal-Stream",
   description: "Enterprise Data-to-Video Storage Solution",
   base: "/b2v/", // Assumes deploying to https://username.github.io/b2v/
+  // The hostname carries the base path on purpose: VitePress joins it with each
+  // page's route, so without it every URL in the sitemap would point at a 404.
+  sitemap: { hostname: 'https://fabriziosalmi.github.io/b2v/' },
   themeConfig: {
     footer: {
       message:

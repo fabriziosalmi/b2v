@@ -1,0 +1,77 @@
+name: CI
+
+# Questo repository non aveva nessun workflow sulle pull request: in
+# .github/workflows/ c'era solo deploy-docs.yml, legato al push su main.
+# Nulla compilava il codice, nulla eseguiva i test, e cargo clippy non poteva
+# nemmeno partire per via di un .clippy.toml non valido (rimosso in questo
+# cambio).
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  rust:
+    name: Rust (test, clippy, end to end)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Cache cargo
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: cargo-${{ runner.os }}-${{ hashFiles('Cargo.lock') }}
+          restore-keys: cargo-${{ runner.os }}-
+
+      - name: Unit tests
+        run: cargo test --all-targets
+
+      # Il codice e' pulito per clippy, verificato: con -D warnings non emette
+      # una sola segnalazione. L'unica cosa che impediva a clippy di girare era
+      # .clippy.toml, che conteneva una sezione [lints] inesistente per quel
+      # formato e lo faceva morire con "error: unknown field name".
+      - name: Clippy
+        run: cargo clippy --all-targets -- -D warnings
+
+      # ffmpeg serve a test_e2e.sh, che e' il controllo piu' forte di questo
+      # repository: genera 10 MB casuali, li codifica in un video, li
+      # ridecodifica e confronta gli SHA256. Se la codifica perde un bit, qui
+      # si vede. Dura una quindicina di secondi.
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: End to end (codifica, decodifica, confronto degli hash)
+        run: bash test_e2e.sh
+
+# Perche' non c'e' un gate sulla formattazione: `cargo fmt --check` segnala 44
+# punti di differenza su 282 righe. Riformattare il codice e' un cambio a se',
+# e infilarlo qui seppellirebbe l'aggiunta della CI sotto un diff enorme.
+#
+# Perche' non c'e' un job JavaScript: `npm run test:js` non puo' funzionare.
+# jest e ts-jest non sono fra le devDependencies (ci sono solo vitepress e
+# prettier); jest.config.js usa module.exports mentre package.json dichiara
+# "type": "module", quindi Node lo rifiuta con "module is not defined in ES
+# module scope"; e il suo testMatch, "**/?(*.)+(spec|test).?(m|k)js", esclude
+# i .ts mentre i tre file di test sono .ts. Anche sistemando tutto questo, i
+# tre file sono segnaposto: contengono "TODO: Implement actual test" e
+# asseriscono che 1 + 1 fa 2. Un job cosi' sarebbe verde senza verificare
+# niente, che e' peggio di non averlo.

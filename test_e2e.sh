@@ -1,6 +1,17 @@
 #!/bin/bash
 set -e
 
+# SHA256 portabile: su Linux c'e' sha256sum, su macOS shasum. Lo script usava
+# solo `shasum -a 256`, che su una Ubuntu senza perl non esiste: nella CI
+# sarebbe morto qui invece di verificare l'integrita'.
+sha256() {
+  if command -v sha256sum >/dev/null 2>&1; then
+    sha256sum "$1" | awk '{print $1}'
+  else
+    shasum -a 256 "$1" | awk '{print $1}'
+  fi
+}
+
 # ==============================================================================
 # Eternal-Stream (b2v) E2E Verification Script
 # ==============================================================================
@@ -41,7 +52,7 @@ echo "[1/5] Generating random test data..."
 echo "      Size: ${SIZE_MB}MB"
 echo "      File: $INPUT_FILE"
 dd if=/dev/urandom of=$INPUT_FILE bs=1M count=$SIZE_MB status=none
-ORIGINAL_HASH=$(shasum -a 256 $INPUT_FILE | awk '{print $1}')
+ORIGINAL_HASH=$(sha256 "$INPUT_FILE")
 echo "      Hash: $ORIGINAL_HASH"
 
 # 2. Build Project
@@ -79,7 +90,7 @@ echo "      File restored: $RESTORED_FILE"
 # 5. Verify
 echo ""
 echo "[5/5] Verifying integrity..."
-RESTORED_HASH=$(shasum -a 256 $RESTORED_FILE | awk '{print $1}')
+RESTORED_HASH=$(sha256 "$RESTORED_FILE")
 echo "      Original Hash: $ORIGINAL_HASH"
 echo "      Restored Hash: $RESTORED_HASH"
 

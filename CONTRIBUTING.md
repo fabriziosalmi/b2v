@@ -77,3 +77,7 @@ We strive for high-quality, readable code. Please adhere to the following standa
 ## Running CI
 
 Contributions that modify code or documentation should trigger the CI pipeline. If you encounter issues with CI, please report them in an issue first.
+
+## Submitting Feedback and Reports
+
+For bug reports, feature requests, or general feedback that does not involve direct code changes, please open an issue in the repository.

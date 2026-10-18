@@ -40,7 +40,9 @@ The binary will be available at `./target/release/b2v`.
 
 ## Usage
 
-### Encode (file to video)
+### Example Usage
+
+#### Encode (file to video)
 Convert a binary file into a video file (`.mkv`, `.mp4`).
 
 ```bash
@@ -51,6 +53,17 @@ b2v encode \
   --codec ffv1
 ```
 
+#### Decode (video to file)
+Restore the original file from a video.
+
+```bash
+b2v decode \
+  --input ./backup_video.mkv \
+  --output ./restored_backup.iso
+```
+
+### Options
+
 | Option | Default | Description |
 |--------|---------|-------------|
 | `--input`, `-i` | Required | Path to the input file. |
@@ -60,40 +73,20 @@ b2v encode \
 | `--data-shards` | `10` | Number of Reed-Solomon data shards per chunk. |
 | `--parity-shards` | `2` | Number of Reed-Solomon parity shards per chunk. |
 
-### Decode (video to file)
-Restore the original file from a video.
+### Encode Example
+
+```bash
+b2v encode \
+  --input /path/to/your/file \
+  --output output_video.mkv \
+  --block-size 4 \
+  --codec ffv1
+```
+
+### Decode Example
 
 ```bash
 b2v decode \
-  --input ./backup_video.mkv \
-  --output ./restored_backup.iso
+  --input output_video.mkv \
+  --output ./restored_file
 ```
-
-The decoder reads the header from the first video frame to determine the original filename, file size, block size, and Reed-Solomon parameters.
-
-## Testing
-
-Run the end-to-end verification script:
-
-```bash
-./test_e2e.sh
-```
-
-## Legal disclaimer
-
-Using this tool to store non-video data on public video hosting platforms may violate their Terms of Service. Use `b2v` only on platforms where you have the right to store arbitrary data (e.g., your own self-hosted instance, a private NAS, or a server you control).
-
-The authors are not responsible for banned accounts, data loss, or legal consequences resulting from misuse of this tool on third-party platforms.
-
-## Recommended platforms
-
-If you want to use `b2v` as a storage backend, self-hosted platforms give you full control over what you upload:
-
-| Platform | Notes |
-|----------|-------|
-| [PeerTube](https://joinpeertube.org/) | Self-hosted, decentralized video hosting. |
-| [Nextcloud](https://nextcloud.com/) | Self-hosted file and media storage. |
-| [Jellyfin](https://jellyfin.org/) | Self-hosted media server. |
-
-## License
-MIT License.

@@ -17,3 +17,7 @@
 
 ## Zero-Copy Design
 The tool is designed to handle files larger than available RAM. It uses streaming iterators and buffers only a few frames at a time.
+
+## Additional Resources
+- [Getting Started Guide](/guide/getting-started)
+- [Recommended Platforms](/guide/recommended-platforms)
